@@ -1,0 +1,20 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notification-tester-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notification-tester
+  template:
+    metadata:
+      labels:
+        app: notification-tester
+    spec:
+      containers:
+      - name: webserver-simple
+        image: docker.io/kostiscodefresh/notification-tester:1.0
+        ports:
+        - containerPort: 8080
